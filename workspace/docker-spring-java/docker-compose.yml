@@ -1,0 +1,12 @@
+
+version: '3.6'
+services:
+  app:
+    build: .
+    ports:
+      - 8082:8080
+    tty: true
+    volumes:
+      - ./server:/srv:cached
+    working_dir: /srv
+    command: bash -c "sh gradlew build && java -jar build/libs/api-0.0.1-SNAPSHOT.jar"
